@@ -2,12 +2,14 @@
 
 void	minishell(char *cmd)
 {
+	extern char **environ;
+
 	if (ft_strcmp(cmd, "echo") == 0)
 		ft_putendl("print something");
 	else if (ft_strcmp(cmd, "cd") == 0)
 		ft_putendl("change directory");
 	else if (ft_strcmp(cmd, "env") == 0)
-		ft_putendl("print environment things");
+		get_env(environ);
 	else if (ft_strcmp(cmd, "setenv") == 0)
 		ft_putendl("set enviroment things");
 	else if (ft_strcmp(cmd, "unsetenv") == 0)

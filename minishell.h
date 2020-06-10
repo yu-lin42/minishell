@@ -12,12 +12,16 @@
 # include <signal.h>
 # include <stdlib.h>
 
-// typedef struct	s_list
-// {
-// 	char	*data;
-// 	struct s_list	*next;
-// }					t_list;
+typedef struct		s_lists
+{
+	char			*str_data;
+	struct s_lists	*next;
+}					t_lists;
 
-void	minishell(char *cmd);
-
+void		minishell(char *cmd);
+void		get_env(char **env);
+t_lists		*dynamic_list(char *stuff, t_lists *head);
+t_lists		*new_list(const char *stuff);
+void		add_list(const char *stuff, t_lists *head);
+void		print_list(t_lists **list);
 #endif

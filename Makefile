@@ -1,7 +1,7 @@
 NAME = minishell
 
 LIB_DIR = ./libft
-SRC = main.c commands.c
+SRC = main.c commands.c add_list.c get_environment.c print_list.c
 FLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)

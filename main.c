@@ -2,7 +2,6 @@
 
 int		main(int ac, char **av)
 {
-	// extern char **environment;
 	// t_list *local;
 
 	// local = create_list(environment);
