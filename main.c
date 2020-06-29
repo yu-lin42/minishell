@@ -1,18 +1,31 @@
 #include "minishell.h"
 
+
+t_enviro		*init(void)
+{
+	extern char **environ;
+	t_enviro		*env;
+	int i;
+
+	i = 0;
+	env = NULL;
+	while (environ[i] != NULL)
+	{
+		env = dynamic_node(environ[i], env);
+		i++;
+	}
+	return (env);
+}
+
 int		main(int ac, char **av)
 {
-	// t_list *local;
-
-	// local = create_list(environment);
-	// minishell(local);
 	if (ac == 1)
-		ft_putchar('\n');
-	else if (ac == 2)
 	{
-		minishell(av[1]);
+		t_enviro	*env;
+
+		env = init();
+		print_list(env);
+		minishell(env);
 	}
-	else
-		ft_putendl("Do not go further...");
 	return (0);
 }

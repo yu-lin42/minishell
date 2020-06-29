@@ -1,8 +1,8 @@
 NAME = minishell
 
 LIB_DIR = ./libft
-SRC = main.c commands.c add_list.c get_environment.c print_list.c
-FLAGS = -Wall -Werror -Wextra
+SRC = main.c add_list.c print_list.c miniterm.c unsetenv.c arraylen.c
+FLAGS = -Wall -Wextra
 
 all: $(NAME)
 

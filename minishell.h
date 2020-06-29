@@ -12,16 +12,24 @@
 # include <signal.h>
 # include <stdlib.h>
 
-typedef struct		s_lists
+typedef struct		s_enviro
 {
-	char			*str_data;
-	struct s_lists	*next;
-}					t_lists;
+	char			*key;
+	char			*value;
+	struct s_enviro	*next;
+}					t_enviro;
 
-void		minishell(char *cmd);
-void		get_env(char **env);
-t_lists		*dynamic_list(char *stuff, t_lists *head);
-t_lists		*new_list(const char *stuff);
-void		add_list(const char *stuff, t_lists *head);
-void		print_list(t_lists **list);
+void	read_line(char buffer[]);
+void	minishell(t_enviro *env);
+
+t_enviro		*dynamic_node(char *stuff, t_enviro *head);
+t_enviro		*new_node(const char *stuff);
+void		add_node(const char *stuff, t_enviro *head);
+char	**split_kv(const char *array);
+void		print_list(t_enviro *list);
+
+size_t		arraylen(char **array);
+t_enviro	*run_unsetenv(char buffer[], t_enviro *env);
+void	ft_unsetenv(t_enviro *env, char *remove);
+// void	free_list(t_lists *list);
 #endif

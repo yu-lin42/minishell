@@ -1,15 +1,16 @@
 #include "minishell.h"
 
-void	print_list(t_lists **list)
+void	print_list(t_enviro *list)
 {
-	t_lists		*head;
+	t_enviro		*head;
 
-	head = *list;
+	head = list;
 	while (head != NULL)
 	{
-		ft_putendl(head->str_data);
+		ft_putstr(head->key);
+		ft_putchar('=');
+		ft_putendl(head->value);
 		head = head->next;
-		free(*list);
-		*list = head;
+		list = head;
 	}
 }
