@@ -33,5 +33,6 @@ t_enviro	*run_unsetenv(char buffer[], t_enviro *env);
 void	ft_unsetenv(t_enviro *env, char *remove);
 t_enviro	*run_setenv(char buffer[], t_enviro *env);
 void	ft_setenv(t_enviro *head, char *add);
-// void	free_list(t_lists *list);
+void	free_list(t_enviro *list);
+void	free_2d(char **array);
 #endif

@@ -24,8 +24,10 @@ int		main(int ac, char **av)
 		t_enviro	*env;
 
 		env = init();
-		print_list(env);
+		// print_list(env);
 		minishell(env);
 	}
+	else
+		ft_putchar('\n');
 	return (0);
 }

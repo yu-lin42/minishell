@@ -27,5 +27,11 @@ void	minishell(t_enviro *env)
 			print_list(env);
 		else if (ft_strncmp(buffer, "setenv ", 7) == 0)
 			run_setenv(buffer, env);
+		else if (ft_strcmp(buffer, "exit") == 0)
+			{
+				free_list(env);
+				// free(buffer);
+				return;
+			}
 	}
 }

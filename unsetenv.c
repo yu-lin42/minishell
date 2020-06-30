@@ -5,13 +5,13 @@ t_enviro	*run_unsetenv(char buffer[], t_enviro *env)
 	char	**arg;
 
 	arg = ft_strsplit(buffer, ' ');
-	// ft_putnbr(arraylen(arg));
-	ft_putchar('\n');
 	if (arraylen(arg) == 2)
 		ft_unsetenv(env, arg[1]);
 	else
 		ft_putendl("Error: What is this?");
-	// print_list(env);
+	free(arg[0]);
+	free(arg[1]);
+	free(arg);
 	return (env);
 }
 
