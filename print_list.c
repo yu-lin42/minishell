@@ -7,9 +7,14 @@ void	print_list(t_enviro *list)
 	head = list;
 	while (head != NULL)
 	{
-		ft_putstr(head->key);
-		ft_putchar('=');
-		ft_putendl(head->value);
+		if ((head->key) == NULL && (head->value) == NULL)
+			continue;
+		else
+		{
+			ft_putstr(head->key);
+			ft_putchar('=');
+			ft_putendl(head->value);
+		}
 		head = head->next;
 		list = head;
 	}
