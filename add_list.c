@@ -10,6 +10,9 @@ t_enviro	*new_node(const char *stuff)
 	new->key = ft_strdup(key_value[0]);
 	new->value = ft_strdup(key_value[1]);
 	new->next = NULL;
+	free(key_value[0]);
+	free(key_value[1]);
+	free(key_value);
 	return (new);
 }
 
@@ -26,6 +29,9 @@ void	add_node(const char *stuff, t_enviro *head)
 	teleport->next->key = ft_strdup(key_value[0]);
 	teleport->next->value = ft_strdup(key_value[1]);
 	teleport->next->next = NULL;
+	free(key_value[0]);
+	free(key_value[1]);
+	free(key_value);
 }
 
 t_enviro		*dynamic_node(char *stuff, t_enviro *head)

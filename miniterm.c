@@ -26,6 +26,6 @@ void	minishell(t_enviro *env)
 		else if (strcmp(buffer, "env") == 0)
 			print_list(env);
 		else if (ft_strncmp(buffer, "setenv ", 7) == 0)
-			ft_putendl("setting environment");
+			run_setenv(buffer, env);
 	}
 }

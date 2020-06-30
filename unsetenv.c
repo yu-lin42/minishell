@@ -11,7 +11,7 @@ t_enviro	*run_unsetenv(char buffer[], t_enviro *env)
 		ft_unsetenv(env, arg[1]);
 	else
 		ft_putendl("Error: What is this?");
-	print_list(env);
+	// print_list(env);
 	return (env);
 }
 

@@ -1,14 +1,14 @@
 NAME = minishell
 
 LIB_DIR = ./libft
-SRC = main.c add_list.c print_list.c miniterm.c unsetenv.c arraylen.c
+SRC = main.c add_list.c print_list.c miniterm.c unsetenv.c arraylen.c setenv.c
 FLAGS = -Wall -Wextra
 
 all: $(NAME)
 
 $(NAME):
 	@make -C $(LIB_DIR)
-	@gcc $(FLAGS) $(SRC) $(LIB_DIR)/libft.a -o $(NAME)
+	@gcc $(FLAGS) $(SRC) $(LIB_DIR)/libft.a -g -o $(NAME)
 	@make clean
 
 clean:
