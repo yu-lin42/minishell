@@ -35,7 +35,7 @@ void	minishell(t_enviro *env)
 
 	while (42)
 	{
-		write(1, "$>>", 3);
+		write(1, "$>", 2);
 		buffer = read_line();
 		if (ft_strlen(buffer) == 0 || buffer[0] == '\n')
 			continue;

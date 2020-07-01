@@ -38,5 +38,8 @@ void	free_2d(char **array);
 
 void	ft_system(t_enviro *env, char *buffer);
 char	**array_pushstr(char **array, char *str);
+void	scan_path(t_enviro *env, char **segments);
+void	scan_dir(char *pathway, char **segments, t_enviro *env);
+void	execute(char **segment, char *cur_dir, t_enviro *env);
 // size_t		arraylen(char **array);
 #endif
