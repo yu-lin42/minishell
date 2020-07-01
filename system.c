@@ -19,7 +19,6 @@ void	ft_system(t_enviro *env, char *buffer)
 		free(str2);
 		env = env->next;
 	}
-
 	if ((pid = fork()) == 0)
 	{
 		if (segments[0][0] == '/')

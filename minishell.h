@@ -19,27 +19,28 @@ typedef struct		s_enviro
 	struct s_enviro	*next;
 }					t_enviro;
 
-char	*read_line(void);
-void	minishell(t_enviro *env);
+char		*read_line(void);
+void		minishell(t_enviro *env);
 
-t_enviro		*dynamic_node(char *stuff, t_enviro *head);
-t_enviro		*new_node(const char *stuff);
+t_enviro	*dynamic_node(char *stuff, t_enviro *head);
+t_enviro	*new_node(const char *stuff);
 void		add_node(const char *stuff, t_enviro *head);
-char	**split_kv(const char *array);
+char		**split_kv(const char *array);
 void		print_list(t_enviro *list);
 
 size_t		arraylen(char **array);
 t_enviro	*run_unsetenv(char *buffer, t_enviro *env);
-void	ft_unsetenv(t_enviro *env, char *remove);
+void		ft_unsetenv(t_enviro *env, char *remove);
 t_enviro	*run_setenv(char *buffer, t_enviro *env);
-void	ft_setenv(t_enviro *head, char *add);
-void	free_list(t_enviro *list);
-void	free_2d(char **array);
+void		ft_setenv(t_enviro *head, char *add);
 
-void	ft_system(t_enviro *env, char *buffer);
-char	**array_pushstr(char **array, char *str);
-void	scan_path(t_enviro *env, char **segments);
-void	scan_dir(char *pathway, char **segments, t_enviro *env);
-void	execute(char **segment, char *cur_dir, t_enviro *env);
-// size_t		arraylen(char **array);
+void		free_list(t_enviro *list);
+void		free_2d(char **array);
+
+char		**array_pushstr(char **array, char *str);
+
+void		ft_system(t_enviro *env, char *buffer);
+void		scan_path(t_enviro *env, char **segments);
+void		scan_dir(char *pathway, char **segments, t_enviro *env);
+void		execute(char **segment, char *cur_dir, t_enviro *env);
 #endif

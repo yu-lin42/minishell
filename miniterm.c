@@ -51,7 +51,6 @@ void	minishell(t_enviro *env)
 				return;
 			}
 		else
-			// ft_putendl(buffer);
 			ft_system(env, buffer);
 		free(buffer);
 	}
