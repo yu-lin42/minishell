@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-t_enviro	*run_setenv(char buffer[], t_enviro *env)
+t_enviro	*run_setenv(char *buffer, t_enviro *env)
 {
 	char **arg;
 

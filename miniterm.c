@@ -1,24 +1,42 @@
 #include "minishell.h"
 
-void	read_line(char buffer[])
+void	replace_tab(char buffer[])
+{
+	int i;
+
+	i = 0;
+	while (buffer[i])
+	{
+		if (buffer[i] == '\t')
+			buffer[i] = ' ';
+		i++;
+	}
+}
+
+char	*read_line(void)
 {
 	size_t size;
+	char	*str;
+	char	buffer[4096];
 
 	bzero(buffer, 4096);
 	size = read(0, buffer, 4096);
 	if (size >= 4096)
 		buffer[4095] = '\0';
 	buffer[size - 1] = '\0';
+	replace_tab(buffer);
+	str = ft_strtrim(buffer);
+	return (str);
 }
 
 void	minishell(t_enviro *env)
 {
-	char buffer[4096];
+	char *buffer;
 
 	while (42)
 	{
 		write(1, "$>>", 3);
-		read_line(buffer);
+		buffer = read_line();
 		if (ft_strlen(buffer) == 0 || buffer[0] == '\n')
 			continue;
 		if (ft_strncmp(buffer, "unsetenv ", 9) == 0)
@@ -30,8 +48,11 @@ void	minishell(t_enviro *env)
 		else if (ft_strcmp(buffer, "exit") == 0)
 			{
 				free_list(env);
-				// free(buffer);
 				return;
 			}
+		else
+			// ft_putendl(buffer);
+			ft_system(env, buffer);
+		free(buffer);
 	}
 }

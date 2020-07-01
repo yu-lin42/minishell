@@ -17,17 +17,12 @@ t_enviro		*init(void)
 	return (env);
 }
 
-int		main(int ac, char **av)
+int		main()
 {
-	if (ac == 1)
-	{
-		t_enviro	*env;
+	t_enviro	*env;
 
-		env = init();
-		// print_list(env);
-		minishell(env);
-	}
-	else
-		ft_putchar('\n');
+	env = init();
+	// print_list(env);
+	minishell(env);
 	return (0);
 }

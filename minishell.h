@@ -19,7 +19,7 @@ typedef struct		s_enviro
 	struct s_enviro	*next;
 }					t_enviro;
 
-void	read_line(char buffer[]);
+char	*read_line(void);
 void	minishell(t_enviro *env);
 
 t_enviro		*dynamic_node(char *stuff, t_enviro *head);
@@ -29,10 +29,14 @@ char	**split_kv(const char *array);
 void		print_list(t_enviro *list);
 
 size_t		arraylen(char **array);
-t_enviro	*run_unsetenv(char buffer[], t_enviro *env);
+t_enviro	*run_unsetenv(char *buffer, t_enviro *env);
 void	ft_unsetenv(t_enviro *env, char *remove);
-t_enviro	*run_setenv(char buffer[], t_enviro *env);
+t_enviro	*run_setenv(char *buffer, t_enviro *env);
 void	ft_setenv(t_enviro *head, char *add);
 void	free_list(t_enviro *list);
 void	free_2d(char **array);
+
+void	ft_system(t_enviro *env, char *buffer);
+char	**array_pushstr(char **array, char *str);
+// size_t		arraylen(char **array);
 #endif
