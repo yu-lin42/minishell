@@ -29,7 +29,7 @@ void	ft_system(t_enviro *env, char *buffer)
 	}
 	else
 		wait(&pid);
-	free_2d(segments);
+	free2d(segments);
 }
 
 void	scan_path(t_enviro *env, char **segments)
@@ -91,7 +91,7 @@ void	scan_dir(char *pathway, char **segments, t_enviro *env)
 	}
 	if (check == 0)
 		ft_putendl("Error: Command not found");
-	free_2d(values);
+	free2d(values);
 }
 
 void	execute(char **segment, char *cur_dir, t_enviro *env)

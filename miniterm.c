@@ -50,6 +50,8 @@ void	minishell(t_enviro *env)
 				free_list(env);
 				return;
 			}
+		else if (ft_strncmp(buffer, "cd ", 3) == 0 || ft_strcmp(buffer, "cd") == 0)
+			env = ft_cd(env, buffer);
 		else
 			ft_system(env, buffer);
 		free(buffer);

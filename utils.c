@@ -1,28 +1,63 @@
 #include "minishell.h"
 
-char	**array_pushstr(char **array, char *str)
+int		check_for_env(t_enviro *env, char *to_find)
 {
-	char **new;
-	size_t i;
+	while (env != NULL)
+	{
+		if (ft_strcmp(env->key, to_find) == 0)
+			return (1);
+		env = env->next;
+	}
+	return (0);
+}
 
-	i = 0;
-	if (array == NULL)
+char		*get_env_value(t_enviro *env, char *to_get)
+{
+	while (env != NULL)
 	{
-		new = (char **)malloc(sizeof(char*) * 2);
-		new[0] = ft_strdup(str);
-		new[1] = NULL;
+		if (ft_strcmp(env->key, to_get) == 0)
+			break;
+		env = env->next;
 	}
-	else
+	return (env->value);
+}
+
+void		change_directory(char *path, char *message)
+{
+	int flag;
+	flag = chdir(path);
+	if (flag != 0)
 	{
-		new = (char **)malloc(sizeof(char *) * (arraylen(array) + 2));
-		while (array[i])
-		{
-			new[i] = ft_strdup(array[i]);
-			i++;
-		}
-		new[i] = ft_strdup(str);
-		new[++i] = NULL;
-		free_2d(array);
+		ft_putstr(path);
+		ft_putendl(message);
 	}
-	return (new);
+}
+
+void		move_to_oldpwd(t_enviro *env)
+{
+	char *curr;
+	char *full_var;
+	char curr_dir[1024];
+
+	bzero(curr_dir, 1024);
+	getcwd(curr_dir, 1024);
+	curr = get_env_value(env, "PWD");
+	full_var = create_env("OLDPWD", curr);
+	ft_setenv(env, full_var);
+	free(full_var);
+	full_var = create_env("PWD", curr_dir);
+	ft_setenv(env, full_var);
+	free(curr);
+	free(full_var);
+}
+
+char	*create_env(char *key, char *value)
+{
+	char *tmp;
+	char *env;
+
+	tmp = ft_strjoin(key, "=");
+	env = ft_strjoin(tmp, value);
+	free(tmp);
+	return (env);
 }

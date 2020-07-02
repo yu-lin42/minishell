@@ -9,7 +9,7 @@ t_enviro	*run_unsetenv(char *buffer, t_enviro *env)
 		ft_unsetenv(env, arg[1]);
 	else
 		ft_putendl("Error: What is this?");
-	free_2d(arg);
+	free2d(arg);
 	return (env);
 }
 

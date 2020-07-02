@@ -9,7 +9,7 @@ t_enviro	*run_setenv(char *buffer, t_enviro *env)
 		ft_setenv(env, arg[1]);
 	else
 		ft_putendl("Error: STFU");
-	free_2d(arg);
+	free2d(arg);
 	return (env);
 }
 
@@ -40,6 +40,6 @@ void		ft_setenv(t_enviro *head, char *add)
 	}
 	if (check == 0)
 		head = dynamic_node(add, head);
-	free_2d(add_var);
+	free2d(add_var);
 	free_list(tmp);
 }
