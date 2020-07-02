@@ -51,7 +51,7 @@ t_enviro	*cd_and_go(t_enviro *env, char *path);
 
 int			check_for_env(t_enviro *env, char *to_find);
 char		*get_env_value(t_enviro *env, char *to_get);
-void		change_directory(char *path, char *message);
+int		change_directory(char *path, char *message);
 void		move_to_oldpwd(t_enviro *env);
 char		*create_env(char *key, char *value);
 

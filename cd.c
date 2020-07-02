@@ -38,7 +38,7 @@ t_enviro *to_root(t_enviro *env)
 	{
 		home = get_env_value(env, "HOME");
 		change_directory(home, ": No such file or directory");
-		// free(home);
+		free(home);
 		move_to_oldpwd(env);
 	}
 	return (env);
@@ -56,7 +56,7 @@ t_enviro *to_oldpwd(t_enviro *env)
 	{
 		oldpwd = get_env_value(env, "OLDPWD");
 		change_directory(oldpwd, ": No such file or directory");
-		// free(oldpwd);
+		free(oldpwd);
 		move_to_oldpwd(env);
 	}
 	return (env);
@@ -75,14 +75,14 @@ t_enviro *to_root_path(t_enviro *env, char *path)
 	else
 	{
 		home = get_env_value(env, "HOME");
-		second_half = &path[1];//???
+		second_half = &path[1];
 		if (second_half[0] != '\0')
 			full_path = ft_strjoin(home, second_half);
 		else
 			full_path = ft_strdup(home);
 		change_directory(full_path, ": No such file or directory");
-		// free(full_path);
-		// free(home);
+		free(full_path);
+		free(home);
 		move_to_oldpwd(env);
 	}
 	return (env);
@@ -105,14 +105,13 @@ t_enviro *go_back(t_enviro *env, char *path)
 	else
 	{
 		target = back_steps(slash_len, path_slashes);
-		// ft_putendl(target);
 		change_directory(target, ": No such file or directory");
 		move_to_oldpwd(env);
 	}
-	// free(target);
-	// free_2d(slashes);
-	// free(curr_path);
-	// free_2d(path_slashes);
+	free(target);
+	free2d(slashes);
+	free(curr_path);
+	free2d(path_slashes);
 	return (env);
 }
 
@@ -132,7 +131,7 @@ char *back_steps(size_t slash_len, char **path_slashes)
 		tmp = ft_strjoin(target, "/");
 		free(target);
 		target = ft_strjoin(tmp, path_slashes[i]);
-		// free(tmp);
+		free(tmp);
 		i++;
 	}
 	return (target);
@@ -146,8 +145,8 @@ t_enviro *cd_and_go(t_enviro *env, char *path)
 		error_msg = ft_strdup(": Permission denied");
 	else
 		error_msg = ft_strdup(": No such file or directory");
-	// if (change_directory(path, error_msg))
-	// 	move_to_oldpwd(env);
+	if (change_directory(path, error_msg))
+		move_to_oldpwd(env);
 	free(error_msg);
 	return (env);
 }

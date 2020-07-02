@@ -6,8 +6,10 @@ void	ft_system(t_enviro *env, char *buffer)
 	pid_t	pid;
 	char	*str1;
 	char	*str2;
-	char **envp;
+	char	**envp;
+	t_enviro *head;
 
+	head = env;
 	envp = NULL;
 	segments = ft_strsplit(buffer, ' ');
 	while (env != NULL)
@@ -24,33 +26,36 @@ void	ft_system(t_enviro *env, char *buffer)
 		if (segments[0][0] == '/')
 			execve(segments[0], segments, envp);
 		else
-			scan_path(env, segments);
+			scan_path(head, segments);
 		exit(1);
 	}
 	else
 		wait(&pid);
+	free2d(envp);
 	free2d(segments);
+	free_list(head);
 }
 
 void	scan_path(t_enviro *env, char **segments)
 {
 	char *pathway;
+	t_enviro *head;
 
 	pathway = NULL;
+	head = env;
 	while (env != NULL)
 	{
 		if (ft_strcmp(env->key, "PATH") == 0)
 		{
-			ft_putendl(env->value);
 			pathway = ft_strdup(env->value);
 			break;
 		}
 		env = env->next;
 	}
 	if (pathway)
-	{
-		scan_dir(pathway, segments, env);
-	}
+		scan_dir(pathway, segments, head);
+	free_list(head);
+	free(pathway);
 }
 
 void	scan_dir(char *pathway, char **segments, t_enviro *env)
@@ -89,6 +94,7 @@ void	scan_dir(char *pathway, char **segments, t_enviro *env)
 		closedir(dp);
 		i++;
 	}
+	closedir(dp);
 	if (check == 0)
 		ft_putendl("Error: Command not found");
 	free2d(values);
@@ -116,4 +122,5 @@ void	execute(char **segment, char *cur_dir, t_enviro *env)
 	execve(str2, segment, envp);
 	free(str1);
 	free(str2);
+	free2d(envp);
 }

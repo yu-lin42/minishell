@@ -19,10 +19,10 @@ char		*get_env_value(t_enviro *env, char *to_get)
 			break;
 		env = env->next;
 	}
-	return (env->value);
+	return (ft_strdup(env->value));
 }
 
-void		change_directory(char *path, char *message)
+int		change_directory(char *path, char *message)
 {
 	int flag;
 	flag = chdir(path);
@@ -30,7 +30,9 @@ void		change_directory(char *path, char *message)
 	{
 		ft_putstr(path);
 		ft_putendl(message);
+		return (0);
 	}
+	return (1);
 }
 
 void		move_to_oldpwd(t_enviro *env)

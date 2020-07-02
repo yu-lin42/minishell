@@ -25,7 +25,7 @@ void		ft_setenv(t_enviro *head, char *add)
 		add_var = split_kv(add);
 	else
 	{
-		ft_putendl("Error: WTF");
+		ft_putendl("Syntax error: setenv key=value");
 		return;
 	}
 	while (tmp != NULL)
@@ -33,6 +33,7 @@ void		ft_setenv(t_enviro *head, char *add)
 		if (ft_strcmp(tmp->key, add_var[0]) == 0)
 		{
 			check = 1;
+			free(tmp->value);
 			tmp->value = ft_strdup(add_var[1]);
 			return;
 		}
@@ -41,5 +42,4 @@ void		ft_setenv(t_enviro *head, char *add)
 	if (check == 0)
 		head = dynamic_node(add, head);
 	free2d(add_var);
-	free_list(tmp);
 }

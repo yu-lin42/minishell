@@ -8,7 +8,7 @@ all: $(NAME)
 
 $(NAME):
 	@make -C $(LIB_DIR)
-	@gcc $(FLAGS) $(SRC) $(LIB_DIR)/libft.a -g -o $(NAME)
+	@gcc $(FLAGS) $(SRC) $(LIB_DIR)/libft.a -o $(NAME)
 	@make clean
 
 clean:

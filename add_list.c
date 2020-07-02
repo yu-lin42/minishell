@@ -75,5 +75,6 @@ char	**split_kv(const char *array)
 		j++;
 	}
 	key_value[1][j] = '\0';
+	key_value[2] = NULL;
 	return (key_value);
 }
