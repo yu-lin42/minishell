@@ -2,29 +2,36 @@
 
 int		check_for_env(t_enviro *env, char *to_find)
 {
-	while (env != NULL)
+	t_enviro *head;
+
+	head = env;
+	while (head != NULL)
 	{
-		if (ft_strcmp(env->key, to_find) == 0)
+		if (ft_strcmp(head->key, to_find) == 0)
 			return (1);
-		env = env->next;
+		head = head->next;
 	}
 	return (0);
 }
 
 char		*get_env_value(t_enviro *env, char *to_get)
 {
-	while (env != NULL)
+	t_enviro *head;
+
+	head = env;
+	while (head != NULL)
 	{
-		if (ft_strcmp(env->key, to_get) == 0)
+		if (ft_strcmp(head->key, to_get) == 0)
 			break;
-		env = env->next;
+		head = head->next;
 	}
-	return (ft_strdup(env->value));
+	return (ft_strdup(head->value));
 }
 
 int		change_directory(char *path, char *message)
 {
 	int flag;
+	
 	flag = chdir(path);
 	if (flag != 0)
 	{

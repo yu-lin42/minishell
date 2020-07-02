@@ -33,7 +33,6 @@ void	ft_system(t_enviro *env, char *buffer)
 		wait(&pid);
 	free2d(envp);
 	free2d(segments);
-	free_list(head);
 }
 
 void	scan_path(t_enviro *env, char **segments)
@@ -54,7 +53,6 @@ void	scan_path(t_enviro *env, char **segments)
 	}
 	if (pathway)
 		scan_dir(pathway, segments, head);
-	free_list(head);
 	free(pathway);
 }
 
