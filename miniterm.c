@@ -47,6 +47,7 @@ void	minishell(t_enviro *env)
 			run_setenv(buffer, env);
 		else if (ft_strcmp(buffer, "exit") == 0)
 			{
+				free(buffer);
 				free_list(env);
 				return;
 			}

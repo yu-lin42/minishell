@@ -21,6 +21,8 @@ void	ft_unsetenv(t_enviro *head, char *remove)
 	tmp = head;
 	if (tmp != NULL && (ft_strcmp(tmp->key, remove) == 0))
 	{
+		free(tmp->key);
+		free(tmp->value);
 		head = tmp->next;
 		free(tmp);
 		return ;
@@ -33,5 +35,7 @@ void	ft_unsetenv(t_enviro *head, char *remove)
 	if (tmp == NULL)
 		return;
 	prev->next = tmp->next;
+	free(tmp->key);
+	free(tmp->value);
 	free(tmp);
 }

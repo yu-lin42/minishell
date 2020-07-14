@@ -35,6 +35,7 @@ void		ft_setenv(t_enviro *head, char *add)
 			check = 1;
 			free(tmp->value);
 			tmp->value = ft_strdup(add_var[1]);
+			free2d(add_var);
 			return;
 		}
 		tmp = tmp->next;

@@ -7,9 +7,10 @@ void	free_list(t_enviro *list)
 	head = list;
 	while (head != NULL)
 	{
+		free(head->key);
+		free(head->value);
 		free(head);
 		head = head->next;
 		// free(list);
-		list = head;
 	}
 }

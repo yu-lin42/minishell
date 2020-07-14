@@ -92,7 +92,6 @@ void	scan_dir(char *pathway, char **segments, t_enviro *env)
 		closedir(dp);
 		i++;
 	}
-	closedir(dp);
 	if (check == 0)
 		ft_putendl("Error: Command not found");
 	free2d(values);
